@@ -1,21 +1,32 @@
-let randomNumber = Math.floor(Math.random() * 100) + 1;
-console.log(randomNumber);
 let attempts = 0;
 const maxAttempts = 5;
+let random;
+function clic(){
+    let first=parseInt(document.getElementById("one").value)
+    let second=parseInt(document.getElementById("two").value)
+
+
+ random=Math.floor(Math.random()*(second-first+1))+first;
+console.log(random);
+
+}
+
 
 function checkGuess() {
-    const userGuess = parseInt(document.getElementById('guessInput').value);
-    const messageElement = document.getElementById('message');
+    const guess = parseInt(document.getElementById('three').value);
+    const mess = document.getElementById('show');
 
    
 
     attempts++;
 
-    if (userGuess === randomNumber) {
-        messageElement.textContent = "Congratulations! You guessed the right number!";
+    if (guess === random) {
+        mess.textContent = "You guessed the right number!";
     } else if (attempts >= maxAttempts) {
-        messageElement.textContent = `Sorry! You've used all your guesses. The number was ${randomNumber}.`;
+        mess.textContent = `Sorry! You've used all your guesses. The number was ${random}.`;
     } else {
-        messageElement.textContent = `Wrong guess! You have ${maxAttempts - attempts} guesses left.`;
+        mess.textContent = `Wrong guess! You have ${maxAttempts - attempts} guesses left.`;
     }
 }
+
+
